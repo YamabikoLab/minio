@@ -1,0 +1,22 @@
+version: '3'
+services:
+  minio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: "minio"
+      MINIO_ROOT_PASSWORD: "test1234"
+      MINIO_SERVER_URL: "https://localhost:9000"
+      MINIO_SITE_REGION: "us-east-1"
+    command: ["/root/homebrew/bin/minio", "server", "/data", "--console-address", ":9001"]
+    volumes:
+      - minio:/data:cached
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    tty: true
+volumes:
+  minio:
+    driver: local  
