@@ -9,7 +9,7 @@ services:
       MINIO_ROOT_USER: "minio"
       MINIO_ROOT_PASSWORD: "test1234"
       MINIO_SERVER_URL: "https://localhost:9000"
-      MINIO_SITE_REGION: "us-east-1"
+      MINIO_SITE_REGION: "us-west-1"
     command: ["/root/homebrew/bin/minio", "server", "/data", "--console-address", ":9001"]
     volumes:
       - minio:/data:cached
